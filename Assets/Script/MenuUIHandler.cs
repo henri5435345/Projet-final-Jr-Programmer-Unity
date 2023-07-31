@@ -8,21 +8,17 @@ public class MenuUIHandler: MonoBehaviour
 {
 
     [SerializeField] Text PlayerNameInput;
-    
+    // INHERITANCE
     public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
-
+    // INHERITANCE
     public void SetPlayerName()
     {
         PlayerDataHandle.Instance.PlayerName = PlayerNameInput.text;
     }
-    public void  Start()
-    {
-        
-    }
-
+// INHERITANCE
     public void ExitGame()
     {
 #if UNITY_EDITOR
