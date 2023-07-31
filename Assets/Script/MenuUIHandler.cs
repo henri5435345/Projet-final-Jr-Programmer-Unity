@@ -4,22 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
+
+ // INHERITANCE
+ // MenuUIHandler canvas = parent of Start button, Quit button, Input field SetPlayerName (childs)
+
 public class MenuUIHandler: MonoBehaviour
 {
 
     [SerializeField] Text PlayerNameInput;
-    // INHERITANCE
-    public void StartGame()
+   
+    public void StartGame() //Start button
     {
         SceneManager.LoadScene(1);
     }
-    // INHERITANCE
-    public void SetPlayerName()
+
+    public void SetPlayerName() //Input field SetPlayerName
     {
         PlayerDataHandle.Instance.PlayerName = PlayerNameInput.text;
     }
-// INHERITANCE
-    public void ExitGame()
+
+    public void ExitGame() //Quit Button
     {
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
