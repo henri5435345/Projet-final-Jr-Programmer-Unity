@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// INHERITANCE 
+// MainManager = parent - bonus buttons in shop = childs (+10, +1K, +100K)
+
+// POLYMORPHISM - 3 bonus buttons behave differently for cost to buy and clicks bonus
+
 public class MainManager : MonoBehaviour
 {
     public double click;
@@ -73,7 +78,7 @@ public class MainManager : MonoBehaviour
     {
         click += GetClickBonus();
         totalClicksInMeasurement++;
-        SetCount();
+        SetCount();// ABSTRACTION
         script.ChangeForm2();
     }
 
@@ -102,7 +107,7 @@ public class MainManager : MonoBehaviour
             click -= circleCost;
             formManager.HasPurchasedCircle = true;
             formManager.circleBonusCount++;
-            SetCount();
+            SetCount();// ABSTRACTION
         }
         else
         {
@@ -117,7 +122,7 @@ public class MainManager : MonoBehaviour
             click -= triangleCost;
             formManager.HasPurchasedTriangle = true;
             formManager.triangleBonusCount++;
-            SetCount();
+            SetCount();// ABSTRACTION
         }
         else
         {
@@ -131,7 +136,7 @@ public class MainManager : MonoBehaviour
         {
             click -= diamondCost;
             formManager.HasPurchasedDiamond = true;
-            SetCount();
+            SetCount(); // ABSTRACTION
         }
         else
         {
@@ -139,7 +144,7 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    public void SetCount()
+    public void SetCount()// ABSTRACTION
     {
         count.text = "Count : " + FormatNumber(click);
     }

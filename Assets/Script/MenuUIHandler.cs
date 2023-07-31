@@ -5,15 +5,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
 
- // INHERITANCE
- // MenuUIHandler canvas = parent of Start button, Quit button, Input field SetPlayerName (childs)
+ // POLYMORPHISM 
+ // MenuUIHandler = parent of Start button, Quit button, Input field SetPlayerName (childs) - but behave differently
 
 public class MenuUIHandler: MonoBehaviour
 {
 
     [SerializeField] Text PlayerNameInput;
    
-    public void StartGame() //Start button
+    void StartGame() //Start button
     {
         SceneManager.LoadScene(1);
     }
@@ -23,7 +23,7 @@ public class MenuUIHandler: MonoBehaviour
         PlayerDataHandle.Instance.PlayerName = PlayerNameInput.text;
     }
 
-    public void ExitGame() //Quit Button
+    void ExitGame() //Quit Button
     {
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
