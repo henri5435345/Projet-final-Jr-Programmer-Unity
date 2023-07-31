@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// INHERITANCE 
-// MainManager = parent - bonus buttons in shop = childs (+10, +1K, +100K)
-
-// POLYMORPHISM - 3 bonus buttons behave differently for cost to buy and clicks bonus
-
 public class MainManager : MonoBehaviour
 {
     public double click;
@@ -17,8 +12,8 @@ public class MainManager : MonoBehaviour
     public double circleBonusClicks = 10;
     public double triangleBonusClicks = 1000;
     public double diamondBonusClicks = 100000;
-    public Text count;
-    public Text cpsText;
+    [SerializeField] private Text count;
+    [SerializeField] private Text cpsText;
     public float cpsMeasurementDuration = 1.0f;
     private int clicksInMeasurement;
     private float cpsTimer;
@@ -46,7 +41,7 @@ public class MainManager : MonoBehaviour
 
     public void Start()
     {
-        SetCount();
+        SetCount();// ABSTRACTION
         script = FindObjectOfType<ChangeForm>();
         CurrentPlayerName.text = PlayerDataHandle.Instance.PlayerName;
         formManager = FindObjectOfType<FormManager>();
@@ -136,7 +131,7 @@ public class MainManager : MonoBehaviour
         {
             click -= diamondCost;
             formManager.HasPurchasedDiamond = true;
-            SetCount(); // ABSTRACTION
+            SetCount();// ABSTRACTION
         }
         else
         {
@@ -148,8 +143,50 @@ public class MainManager : MonoBehaviour
     {
         count.text = "Count : " + FormatNumber(click);
     }
+    // ENCAPSULATION
+     public double ClickCount
+    {
+        get { return click; }
+        private set { click = value; }
+    }
 
-    private string FormatNumber(double number)
+    public double CircleCost
+    {
+        get { return circleCost; }
+        private set { circleCost = value; }
+    }
+
+    public double TriangleCost
+    {
+        get { return triangleCost; }
+        private set { triangleCost = value; }
+    }
+
+    public double DiamondCost
+    {
+        get { return diamondCost; }
+        private set { diamondCost = value; }
+    }
+
+    public double CircleBonusClicks
+    {
+        get { return circleBonusClicks; }
+        private set { circleBonusClicks = value; }
+    }
+
+    public double TriangleBonusClicks
+    {
+        get { return triangleBonusClicks; }
+        private set { triangleBonusClicks = value; }
+    }
+
+    public double DiamondBonusClicks
+    {
+        get { return diamondBonusClicks; }
+        private set { diamondBonusClicks = value; }
+    }
+
+private string FormatNumber(double number)
     {
         if (number >= 1e66)
         {
